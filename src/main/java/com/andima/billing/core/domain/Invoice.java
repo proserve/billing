@@ -10,18 +10,23 @@ import java.util.List;
 public class Invoice {
     private int number;
     private Date date;
-    private List<ProductInvoices> productsLines;
+    private List<ProductInvoiceCore> productsLines;
     private double tvaPercentage;
     public static int num = 1;
-    public Invoice(List<ProductInvoices> productsLines, double tvaPercentage) {
+
+    public Invoice(double tvaPercentage) {
+        this.tvaPercentage = tvaPercentage;
+    }
+
+    public Invoice(List<ProductInvoiceCore> productsLines, double tvaPercentage) {
         this.productsLines = productsLines;
         this.tvaPercentage = tvaPercentage;
         this.date = new Date();
         this.number = num++;
     }
 
-    public Invoice(ArrayList<ProductInvoices> productInvoices) {
-        this.productsLines = productInvoices;
+    public Invoice(ArrayList<ProductInvoiceCore> productInvoiceCores) {
+        this.productsLines = productInvoiceCores;
         this.tvaPercentage = 17;
         this.date = new Date();
         this.number = num++;
@@ -29,7 +34,7 @@ public class Invoice {
 
     public double getHTAmountSum() {
         double sum = 0;
-        for (ProductInvoices productsLine : productsLines) {
+        for (ProductInvoiceCore productsLine : productsLines) {
             sum += productsLine.getHTAmount();
         }
         return sum;
@@ -38,7 +43,7 @@ public class Invoice {
     public double getTvaAmountSum() {
 
         double sum = 0;
-        for (ProductInvoices productsLine : productsLines) {
+        for (ProductInvoiceCore productsLine : productsLines) {
             sum += productsLine.getTvaAmount(tvaPercentage);
         }
         return sum;

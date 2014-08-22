@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="mainAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.andima.billing.client.controller.MainController">
+    <children>
+        <HBox prefHeight="44.0" prefWidth="600.0" spacing="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Button fx:id="addProductBtn" mnemonicParsing="false" onAction="#showProductInterface" text="Ajouter un produit">
+                    <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                    </HBox.margin>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#showClientInterface" text="Ajouter un client">
+                    <HBox.margin>
+                        <Insets top="10.0" />
+                    </HBox.margin>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#showInvoiceProductInterface" text="Ajouter une ligne dans la facture">
+                    <HBox.margin>
+                        <Insets top="10.0" />
+                    </HBox.margin>
+                </Button>
+                <Region HBox.hgrow="ALWAYS" />
+                <Button mnemonicParsing="false" onAction="#showAddressInterface" text="Ajouter une Adresse">
+                    <HBox.margin>
+                        <Insets right="10.0" top="10.0" />
+                    </HBox.margin>
+                </Button>
+            </children>
+        </HBox>
+        <Button layoutX="25.0" layoutY="55.0" mnemonicParsing="false" onAction="#showInvoiceInterface" text="Ajouter une facture" />
+      <Button layoutX="179.0" layoutY="55.0" mnemonicParsing="false" text="PrinteScene"  onAction="#print"/>
+    </children>
+</AnchorPane>

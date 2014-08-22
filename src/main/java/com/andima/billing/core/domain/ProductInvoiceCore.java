@@ -3,7 +3,7 @@ package com.andima.billing.core.domain;
 /**
  * Created by GHIBOUB Khalid  on 18/08/2014.
  */
-public class ProductInvoices {
+public class ProductInvoiceCore {
     private int number;
     private String designation;
     private int quantity;
@@ -11,13 +11,15 @@ public class ProductInvoices {
     private double unitPrice;
     private boolean withTVA;
 
-    public ProductInvoices(int quantity, double unitPrice) {
+
+
+    public ProductInvoiceCore(int quantity, double unitPrice) {
         this.quantity = quantity;
         this.unitPrice = unitPrice;
         this.withTVA = true;
     }
 
-    public ProductInvoices createWithoutTva(){
+    public ProductInvoiceCore createWithoutTva(){
         this.withTVA = false;
         return this;
     }

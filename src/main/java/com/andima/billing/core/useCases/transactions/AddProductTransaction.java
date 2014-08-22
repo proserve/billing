@@ -4,8 +4,6 @@ import com.andima.billing.core.request.product.ProductDetail;
 import com.andima.billing.core.request.product.response.CreateProductResponse;
 import com.andima.billing.core.service.ProductsPersistenceService;
 
-import java.sql.SQLException;
-
 /**
  * Created by GHIBOUB Khalid  on 18/08/2014.
  */
@@ -19,7 +17,7 @@ public class AddProductTransaction implements Transaction {
     }
 
     @Override
-    public CreateProductResponse execute() throws SQLException {
+    public CreateProductResponse execute() {
         ProductDetail product = productsPersistenceService.createProduct(detail);
         return new CreateProductResponse(product, product.getNumber());
     }

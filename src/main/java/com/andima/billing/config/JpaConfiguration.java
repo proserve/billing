@@ -1,6 +1,12 @@
 package com.andima.billing.config;
 
+import com.andima.billing.core.service.AddressesPersistenceService;
+import com.andima.billing.core.service.ClientsPersistenceService;
+import com.andima.billing.core.service.ProductInvoicesPersistenceService;
 import com.andima.billing.core.service.ProductsPersistenceService;
+import com.andima.billing.persistence.service.AddressesPersistenceServiceImpl;
+import com.andima.billing.persistence.service.ClientsPersistenceServiceImpl;
+import com.andima.billing.persistence.service.ProductInvoicesPersistenceServiceImpl;
 import com.andima.billing.persistence.service.ProductsPersistenceServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -90,4 +96,19 @@ public class JpaConfiguration {
     public ProductsPersistenceService productsPersistenceService(){
         return new ProductsPersistenceServiceImpl();
     }
+
+    @Bean
+    public ClientsPersistenceService clientsPersistenceService(){
+        return new ClientsPersistenceServiceImpl();
+    }
+
+    @Bean
+    public AddressesPersistenceService addressesPersistenceService(){
+        return new AddressesPersistenceServiceImpl();
+    }
+    @Bean
+    public ProductInvoicesPersistenceService ProductInvoicesPersistenceService(){
+        return new ProductInvoicesPersistenceServiceImpl();
+    }
+
 }

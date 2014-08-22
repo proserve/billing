@@ -16,10 +16,10 @@ public class InvoiceTest {
 
     @Before
     public void setUp() throws Exception {
-        ArrayList<ProductInvoices> productInvoices = new ArrayList<ProductInvoices>();
-        productInvoices.add(new ProductInvoices(4, 240.00).createWithoutTva());
-        productInvoices.add(new ProductInvoices(5, 7500.00));
-        invoice = new Invoice(productInvoices);
+        ArrayList<ProductInvoiceCore> productInvoiceCores = new ArrayList<ProductInvoiceCore>();
+        productInvoiceCores.add(new ProductInvoiceCore(4, 240.00).createWithoutTva());
+        productInvoiceCores.add(new ProductInvoiceCore(5, 7500.00));
+        invoice = new Invoice(productInvoiceCores);
     }
 
     @Test
