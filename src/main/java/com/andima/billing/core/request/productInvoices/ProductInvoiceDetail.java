@@ -1,5 +1,7 @@
 package com.andima.billing.core.request.productInvoices;
 
+import com.andima.billing.core.request.invoice.InvoiceDetail;
+
 /**
  * Created by GHIBOUB Khalid  on 20/08/2014.
  */
@@ -10,6 +12,15 @@ public class ProductInvoiceDetail {
     private String UM;
     private double unitPrice;
     private boolean withTVA;
+    private InvoiceDetail invoiceDetail;
+
+    public InvoiceDetail getInvoiceDetail() {
+        return invoiceDetail;
+    }
+
+    public void setInvoiceDetail(InvoiceDetail invoiceDetail) {
+        this.invoiceDetail = invoiceDetail;
+    }
 
     public int getNumber() {
         return number;

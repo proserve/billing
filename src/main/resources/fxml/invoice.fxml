@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.panemu.tiwulfx.control.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0"
+            prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.andima.billing.client.controller.InvoiceController">
+    <content>
+        <AnchorPane>
+            <children>
+                <AnchorPane style="-fx-background-color: white;">
+                    <children>
+                        <VBox layoutX="100.0" layoutY="37.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                              AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <ToolBar prefHeight="40.0" prefWidth="200.0">
+                                    <items>
+                                        <Button mnemonicParsing="false" onAction="#print"
+                                                style="-fx-background-color: #FFF;">
+                                            <graphic>
+                                                <ImageView fitHeight="32.0" fitWidth="32.0" preserveRatio="true">
+                                                    <image>
+                                                        <Image url="@../images/folder_print.png"/>
+                                                    </image>
+                                                </ImageView>
+                                            </graphic>
+                                        </Button>
+                                        <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#saveInvoice"
+                                                style="-fx-background-color: #FFF;">
+                                            <graphic>
+                                                <ImageView fx:id="saveBtn" fitHeight="32.0" fitWidth="32.0"
+                                                           preserveRatio="true">
+                                                    <image>
+                                                        <Image url="@../images/document-save-as.png"/>
+                                                    </image>
+                                                </ImageView>
+                                            </graphic>
+                                        </Button>
+                                    </items>
+                                </ToolBar>
+                                <VBox fx:id="root">
+                                    <children>
+                                        <ImageView preserveRatio="true">
+                                            <image>
+                                                <Image url="@../images/Invoice_header.png"/>
+                                            </image>
+                                        </ImageView>
+                                        <HBox prefWidth="300.0" spacing="200.0">
+                                            <children>
+                                                <ImageView preserveRatio="true">
+                                                    <image>
+                                                        <Image url="@../images/info_company.png"/>
+                                                    </image>
+                                                </ImageView>
+                                                <VBox>
+                                                    <children>
+                                                        <GridPane>
+                                                            <children>
+                                                                <Label text="FACTURE   N° :">
+                                                                    <font>
+                                                                        <Font name="Arial" size="18.0"/>
+                                                                    </font>
+                                                                </Label>
+                                                                <NumberField GridPane.columnIndex="1"/>
+                                                                <Label prefHeight="21.0" prefWidth="135.0"
+                                                                       text="DATE               :"
+                                                                       GridPane.rowIndex="1">
+                                                                    <font>
+                                                                        <Font name="Arial" size="18.0"/>
+                                                                    </font>
+                                                                </Label>
+                                                                <DatePicker prefHeight="25.0" prefWidth="193.0"
+                                                                            GridPane.columnIndex="1"
+                                                                            GridPane.rowIndex="1"/>
+                                                            </children>
+                                                            <columnConstraints>
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+                                                                                   prefWidth="120.0"/>
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="165.0"
+                                                                                   prefWidth="165.0"/>
+                                                            </columnConstraints>
+                                                            <rowConstraints>
+                                                                <RowConstraints maxHeight="28.0" minHeight="0.0"
+                                                                                prefHeight="27.0" vgrow="SOMETIMES"/>
+                                                                <RowConstraints maxHeight="60.0" minHeight="10.0"
+                                                                                prefHeight="33.0" vgrow="SOMETIMES"/>
+                                                            </rowConstraints>
+                                                        </GridPane>
+                                                        <GridPane prefHeight="140.0" prefWidth="320.0"
+                                                                  style="-fx-border-color: black; -fx-border-radius: 1em; -fx-border-width: 1pt;">
+                                                            <children>
+                                                                <Label prefHeight="21.0" prefWidth="135.0"
+                                                                       text="Nom &amp; Prénom :">
+                                                                    <font>
+                                                                        <Font name="Arial" size="18.0"/>
+                                                                    </font>
+                                                                </Label>
+                                                                <Label prefHeight="21.0" prefWidth="140.0"
+                                                                       text="Adresse            : "
+                                                                       GridPane.rowIndex="1">
+                                                                    <font>
+                                                                        <Font name="Arial" size="18.0"/>
+                                                                    </font>
+                                                                </Label>
+                                                                <Label prefHeight="21.0" prefWidth="135.0"
+                                                                       text="N° CF               : "
+                                                                       GridPane.rowIndex="2">
+                                                                    <font>
+                                                                        <Font name="Arial" size="18.0"/>
+                                                                    </font>
+                                                                </Label>
+                                                                <TextField prefHeight="25.0" prefWidth="110.0"
+                                                                           GridPane.columnIndex="1"
+                                                                           GridPane.rowIndex="1"/>
+                                                                <TextField prefHeight="25.0" prefWidth="110.0"
+                                                                           GridPane.columnIndex="1"
+                                                                           GridPane.rowIndex="2"/>
+                                                                <ComboBox editable="true" prefHeight="25.0"
+                                                                          prefWidth="165.0" GridPane.columnIndex="1"/>
+                                                            </children>
+                                                            <columnConstraints>
+                                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="159.0"
+                                                                                   minWidth="10.0" prefWidth="143.0"/>
+                                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="165.0"
+                                                                                   minWidth="10.0" prefWidth="165.0"/>
+                                                            </columnConstraints>
+                                                            <padding>
+                                                                <Insets bottom="10.0" left="10.0" right="10.0"
+                                                                        top="10.0"/>
+                                                            </padding>
+                                                            <rowConstraints>
+                                                                <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                                vgrow="SOMETIMES"/>
+                                                                <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                                vgrow="SOMETIMES"/>
+                                                                <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                                vgrow="SOMETIMES"/>
+                                                            </rowConstraints>
+                                                        </GridPane>
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </HBox>
+                                        <Pane fx:id="pane" VBox.vgrow="ALWAYS"/>
+                                        <HBox spacing="50.0">
+                                            <children>
+                                                <VBox fx:id="sumVbox" prefHeight="172.0" prefWidth="496.0"
+                                                      spacing="10.0">
+                                                    <children>
+                                                        <Label alignment="CENTER"
+                                                               text="La présente facture est arrêtée à la somme de :"
+                                                               underline="true">
+                                                            <font>
+                                                                <Font name="Arial Bold Italic" size="18.0"/>
+                                                            </font>
+                                                        </Label>
+                                                        <TextArea fx:id="letterSum" editable="false" prefHeight="132.0"
+                                                                  prefWidth="420.0" promptText="La Somme"
+                                                                  style="-fx-border-color: black; -fx-background-color: white; -fx-border-radius: 10pt; -fx-padding: 5pt;"
+                                                                  wrapText="true">
+                                                            <font>
+                                                                <Font name="Arial Bold Italic" size="18.0"/>
+                                                            </font>
+                                                        </TextArea>
+                                                    </children>
+                                                    <padding>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                                    </padding>
+                                                </VBox>
+                                                <GridPane fx:id="resume"
+                                                          style="-fx-border-color: black; -fx-border-width: 0.1pt;">
+                                                    <children>
+                                                        <Label prefHeight="21.0" prefWidth="232.0"
+                                                               text="Montant HT        :">
+                                                            <font>
+                                                                <Font name="Arial" size="18.0"/>
+                                                            </font>
+                                                        </Label>
+                                                        <Label prefHeight="21.0" prefWidth="201.0"
+                                                               text="TVA 17%           : " GridPane.rowIndex="2">
+                                                            <font>
+                                                                <Font name="Arial" size="18.0"/>
+                                                            </font>
+                                                        </Label>
+                                                        <Label prefHeight="21.0" prefWidth="169.0"
+                                                               text="Montant TTC     : " GridPane.rowIndex="4">
+                                                            <font>
+                                                                <Font name="Arial" size="18.0"/>
+                                                            </font>
+                                                        </Label>
+                                                        <Separator disable="true" orientation="VERTICAL"
+                                                                   prefHeight="25.0" prefWidth="3.0"
+                                                                   GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                                        <Separator disable="true" orientation="VERTICAL"
+                                                                   prefHeight="25.0" prefWidth="3.0"
+                                                                   GridPane.columnIndex="1"/>
+                                                        <Separator disable="true" orientation="VERTICAL"
+                                                                   prefHeight="25.0" prefWidth="3.0"
+                                                                   GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                                                        <Separator disable="true" prefHeight="2.0" prefWidth="200.0"
+                                                                   GridPane.rowIndex="1"/>
+                                                        <Separator disable="true" prefHeight="2.0" prefWidth="200.0"
+                                                                   GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                                                        <Separator disable="true" prefHeight="2.0" prefWidth="200.0"
+                                                                   GridPane.rowIndex="3"/>
+                                                        <Separator disable="true" prefWidth="200.0"
+                                                                   GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+                                                        <Separator disable="true" prefWidth="200.0"
+                                                                   GridPane.rowIndex="5"/>
+                                                        <Separator disable="true" prefWidth="200.0"
+                                                                   GridPane.columnIndex="2" GridPane.rowIndex="5"/>
+                                                        <Label fx:id="montantHt" prefHeight="17.0" prefWidth="182.0"
+                                                               text="?" GridPane.columnIndex="2"/>
+                                                        <Label fx:id="Tva17" prefHeight="17.0" prefWidth="182.0"
+                                                               text="?" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                                                        <Label fx:id="montantTTC" prefHeight="17.0" prefWidth="182.0"
+                                                               text="?" GridPane.columnIndex="2" GridPane.rowIndex="4"/>
+                                                    </children>
+                                                    <columnConstraints>
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="260.0"
+                                                                           minWidth="10.0" prefWidth="150.0"/>
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0"
+                                                                           minWidth="10.0" prefWidth="10.0"/>
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="197.0"
+                                                                           minWidth="10.0" prefWidth="170.0"/>
+                                                    </columnConstraints>
+                                                    <padding>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                                    </padding>
+                                                    <rowConstraints>
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                        vgrow="SOMETIMES"/>
+                                                        <RowConstraints maxHeight="10.0" minHeight="10.0"
+                                                                        prefHeight="10.0" vgrow="SOMETIMES"/>
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                        vgrow="SOMETIMES"/>
+                                                        <RowConstraints maxHeight="10.0" minHeight="10.0"
+                                                                        prefHeight="10.0" vgrow="SOMETIMES"/>
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                        vgrow="SOMETIMES"/>
+                                                        <RowConstraints maxHeight="10.0" minHeight="10.0"
+                                                                        prefHeight="10.0" vgrow="SOMETIMES"/>
+                                                    </rowConstraints>
+                                                </GridPane>
+                                            </children>
+                                        </HBox>
+                                        <Pane fx:id="signaturePane" prefHeight="120.0" prefWidth="392.0">
+                                            <children>
+                                                <Label layoutX="330.0" layoutY="14.0" text="CACHET ET SIGNATURE">
+                                                    <font>
+                                                        <Font name="Arial Bold Italic" size="28.0"/>
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </Pane>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </VBox>
+                    </children>
+                </AnchorPane>
+            </children>
+        </AnchorPane>
+    </content>
+</ScrollPane>

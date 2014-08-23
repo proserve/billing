@@ -9,11 +9,11 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<ScrollPane prefHeight="1190.0" prefWidth="1008.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.andima.billing.client.controller.InvoiceInterfaceController">
+<ScrollPane prefHeight="800.0" prefWidth="1008.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.andima.billing.client.controller.InvoiceInterfaceController">
     <content>
         <AnchorPane>
             <children>
-                <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: white;">
+                <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1000.0" style="-fx-background-color: white;" AnchorPane.rightAnchor="0.0">
                     <children>
                         <ImageView layoutY="238.0" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="238.0">
                             <image>
@@ -55,7 +55,7 @@
                             </padding>
                         </GridPane>
                         <HBox prefHeight="100.0" prefWidth="31.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                        <ImageView preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <ImageView preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <image>
                                 <Image url="@../images/Invoice_header.png" />
                             </image>
@@ -85,7 +85,33 @@
                             </children>
                         </GridPane>
                         <Pane fx:id="pane" layoutX="308.0" layoutY="240.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="450.0" />
-                        <GridPane fx:id="resume" prefHeight="140.0" prefWidth="460.0" style="-fx-border-color: black; -fx-border-width: 0.1pt;" AnchorPane.rightAnchor="0.0">
+                        <VBox fx:id="sumVbox" prefHeight="140.0" spacing="10.0" AnchorPane.leftAnchor="0.0">
+                            <children>
+                                <Label alignment="CENTER" text="La présente facture est arrêtée à la somme de :" underline="true">
+                                    <font>
+                                        <Font name="Arial Bold Italic" size="18.0" />
+                                    </font>
+                                </Label>
+                        <TextArea fx:id="letterSum" editable="false" prefHeight="100.0" prefWidth="420.0" promptText="La Somme" style="-fx-border-color: black; -fx-background-color: white; -fx-border-radius: 10pt; -fx-padding: 5pt;" wrapText="true">
+                           <font>
+                              <Font name="Arial Bold Italic" size="18.0" />
+                           </font>
+                        </TextArea>
+                            </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                        </VBox>
+                  <Pane fx:id="signaturePane" layoutX="301.0" layoutY="450.0" prefHeight="229.0" prefWidth="392.0" AnchorPane.leftAnchor="301.0" AnchorPane.rightAnchor="299.0">
+                     <children>
+                        <Label layoutX="21.0" layoutY="-2.0" text="CACHET ET SIGNATURE">
+                           <font>
+                              <Font name="Arial Bold Italic" size="28.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                        <GridPane fx:id="resume" prefHeight="140.0" prefWidth="460.0" style="-fx-border-color: black; -fx-border-width: 0.1pt;" AnchorPane.rightAnchor="8.0">
                             <children>
                                 <Label prefHeight="21.0" prefWidth="232.0" text="Montant HT           :">
                                     <font>
@@ -105,13 +131,13 @@
                                 <Separator disable="true" orientation="VERTICAL" prefHeight="25.0" prefWidth="3.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                 <Separator disable="true" orientation="VERTICAL" prefHeight="25.0" prefWidth="3.0" GridPane.columnIndex="1" />
                                 <Separator disable="true" orientation="VERTICAL" prefHeight="25.0" prefWidth="3.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                <Separator disable="true" prefWidth="200.0" GridPane.rowIndex="1" />
-                                <Separator disable="true" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                <Separator disable="true" prefWidth="200.0" GridPane.rowIndex="3" />
+                                <Separator disable="true" prefHeight="2.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                                <Separator disable="true" prefHeight="2.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <Separator disable="true" prefHeight="2.0" prefWidth="200.0" GridPane.rowIndex="3" />
                                 <Separator disable="true" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                                 <Separator disable="true" prefWidth="200.0" GridPane.rowIndex="5" />
                                 <Separator disable="true" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                                <Label fx:id="mountantHt" prefHeight="17.0" prefWidth="182.0" text="?" GridPane.columnIndex="2" />
+                                <Label fx:id="montantHt" prefHeight="17.0" prefWidth="182.0" text="?" GridPane.columnIndex="2" />
                                 <Label fx:id="Tva17" prefHeight="17.0" prefWidth="182.0" text="?" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                                 <Label fx:id="montantTTC" prefHeight="17.0" prefWidth="182.0" text="?" GridPane.columnIndex="2" GridPane.rowIndex="4" />
                             </children>
@@ -135,14 +161,14 @@
                     </children>
                 </AnchorPane>
                 <Button mnemonicParsing="false" onAction="#print" style="-fx-background-color: #FFF;">
-               <graphic>
-                  <ImageView fitHeight="32.0" fitWidth="32.0" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/folder_print.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
+                    <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/folder_print.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
             </children>
         </AnchorPane>
     </content>

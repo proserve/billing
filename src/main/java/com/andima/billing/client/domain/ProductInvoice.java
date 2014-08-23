@@ -12,11 +12,20 @@ public class ProductInvoice {
     private String designation;
     private int quantity;
     private String UM;
+    private Invoice invoice;
     private double unitPrice;
     private boolean withTVA;
     private double TTCAmount;
     private double TVAAmount;
     private double HTAmount;
+
+    public Invoice getInvoice() {
+        return invoice;
+    }
+
+    public void setInvoice(Invoice invoice) {
+        this.invoice = invoice;
+    }
 
     public double getTTCAmount() {
         return TTCAmount;
@@ -92,12 +101,20 @@ public class ProductInvoice {
     public ProductInvoiceDetail toProductInvoiceDetail(){
         ProductInvoiceDetail invoicesDetails = new ProductInvoiceDetail();
         BeanUtils.copyProperties(this, invoicesDetails);
+
+        if(invoice != null) {
+            invoicesDetails.setInvoiceDetail(invoice.toInvoiceDetail());
+            System.out.println(invoice.getNumber() + "khalid");
+            System.out.println(invoicesDetails.getInvoiceDetail().getNumber() + "ESI");
+        }
         return invoicesDetails;
     }
 
     public static ProductInvoice fromProductInvoiceDetail(ProductInvoiceDetail details){
         ProductInvoice productInvoice = new ProductInvoice();
         BeanUtils.copyProperties(details, productInvoice);
+        if(details.getInvoiceDetail() != null)
+            productInvoice.setInvoice(Invoice.fromInvoiceDetail(details.getInvoiceDetail()));
         return productInvoice;
     }
 }

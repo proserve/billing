@@ -30,6 +30,7 @@
     -fx-table-cell-border-color: transparent;
     -fx-table-header-border-color: transparent;
     -fx-padding: 5;
+    -fx-font-size: 14pt;
 }
 
 .table-view .column-header-background {

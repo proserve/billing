@@ -10,7 +10,7 @@ public class ProductInvoiceCore {
     private String UM;
     private double unitPrice;
     private boolean withTVA;
-
+    private Invoice invoice;
 
 
     public ProductInvoiceCore(int quantity, double unitPrice) {

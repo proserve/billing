@@ -19,6 +19,16 @@ public class ProductInvoice {
     private String UM;
     private double unitPrice;
     private boolean withTVA;
+    @ManyToOne
+    private Invoice invoice;
+
+    public Invoice getInvoice() {
+        return invoice;
+    }
+
+    public void setInvoice(Invoice invoice) {
+        this.invoice = invoice;
+    }
 
     public int getNumber() {
         return number;
@@ -70,12 +80,16 @@ public class ProductInvoice {
     public ProductInvoiceDetail toProductInvoiceDetail(){
         ProductInvoiceDetail invoicesDetails = new ProductInvoiceDetail();
         BeanUtils.copyProperties(this, invoicesDetails);
+        if(invoice != null)
+            invoicesDetails.setInvoiceDetail(invoice.toInvoiceDetail());
         return invoicesDetails;
     }
 
     public static ProductInvoice fromProductInvoiceDetail(ProductInvoiceDetail details){
         ProductInvoice productInvoice = new ProductInvoice();
         BeanUtils.copyProperties(details, productInvoice);
+        if(details.getInvoiceDetail() != null)
+            productInvoice.setInvoice(Invoice.fromInvoiceDetail(details.getInvoiceDetail()));
         return productInvoice;
     }
 }

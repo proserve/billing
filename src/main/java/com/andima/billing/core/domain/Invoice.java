@@ -12,7 +12,9 @@ public class Invoice {
     private Date date;
     private List<ProductInvoiceCore> productsLines;
     private double tvaPercentage;
-    public static int num = 1;
+    private String fullName;
+    private String address;
+    private String NCF;
 
     public Invoice(double tvaPercentage) {
         this.tvaPercentage = tvaPercentage;
@@ -22,14 +24,12 @@ public class Invoice {
         this.productsLines = productsLines;
         this.tvaPercentage = tvaPercentage;
         this.date = new Date();
-        this.number = num++;
     }
 
     public Invoice(ArrayList<ProductInvoiceCore> productInvoiceCores) {
         this.productsLines = productInvoiceCores;
         this.tvaPercentage = 17;
         this.date = new Date();
-        this.number = num++;
     }
 
     public double getHTAmountSum() {
