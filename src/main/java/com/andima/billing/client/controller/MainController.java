@@ -18,7 +18,6 @@ import javafx.scene.transform.Scale;
 import javafx.stage.Stage;
 import org.controlsfx.control.NotificationPane;
 import org.controlsfx.control.action.AbstractAction;
-import org.controlsfx.dialog.Dialogs;
 
 import java.io.IOException;
 import java.net.URL;
@@ -48,20 +47,21 @@ public class MainController {
     private InvoicesTableView invoicesTableView;
 
     public void showProductInterface() {
-        showNewStage(new productViews());
+        showNewStage(new tableViewProductInvoice());
     }
 
     public void showAddressInterface() {
-        showNewStage(new addressViews());
+        showNewStage(new AddressViews());
     }
 
     public void showClientInterface() {
-        showNewStage(new clientViews());
+        showNewStage(new ClientViews());
     }
 
     public void showInvoiceProductInterface() {
         showNewStage(new ProductInvoicesViews());
     }
+
     private NotificationPane notificationPane;
 
     @FXML
@@ -77,7 +77,6 @@ public class MainController {
         AnchorPane.setLeftAnchor(invoicesTableView, 0.0);
         mainAnchor.getChildren().add(getPane());
     }
-
 
     private Stage showNewStage(Parent parent) {
         Stage stage = new Stage();

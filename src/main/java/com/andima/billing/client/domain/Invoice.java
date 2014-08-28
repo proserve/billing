@@ -3,8 +3,8 @@ package com.andima.billing.client.domain;
 import com.andima.billing.core.request.invoice.InvoiceDetail;
 import org.springframework.beans.BeanUtils;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class Invoice {
     private int number;
-    private Date date;
+    private LocalDate date;
     private List<ProductInvoice> productsLines = new ArrayList<ProductInvoice>();
     private double tvaPercentage;
     private String fullName;
@@ -60,11 +60,11 @@ public class Invoice {
         this.number = number;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

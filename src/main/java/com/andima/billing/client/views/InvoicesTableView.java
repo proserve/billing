@@ -9,15 +9,18 @@ import com.panemu.tiwulfx.common.TableCriteria;
 import com.panemu.tiwulfx.common.TableData;
 import com.panemu.tiwulfx.table.*;
 import javafx.geometry.Pos;
+import javafx.scene.control.Control;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
+import javafx.scene.text.Text;
+import javafx.util.Callback;
 import org.controlsfx.control.action.Action;
 import org.controlsfx.dialog.Dialog;
 import org.controlsfx.dialog.DialogStyle;
 import org.controlsfx.dialog.Dialogs;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -30,18 +33,33 @@ public class InvoicesTableView extends TableControl<Invoice> {
         this.setVisibleComponents(false, Component.TOOLBAR);
         this.setVisibleComponents(false, Component.FOOTER);
 
+
         NumberColumn<Invoice, Integer> numberColumn = new NumberColumn<Invoice, Integer>("number", Integer.class);
         numberColumn.setText("N° ");
         numberColumn.setPrefWidth(60);
         this.addColumn(numberColumn);
 
-        DateColumn<Invoice> invoiceDateColumn = new DateColumn<Invoice>("date");
+        LocalDateColumn<Invoice> invoiceDateColumn = new LocalDateColumn<Invoice>("date");
         this.addColumn(invoiceDateColumn);
         invoiceDateColumn.setText("Date");
         invoiceDateColumn.setPrefWidth(120);
 
-        TextColumn<Invoice> invoiceClientColumn = new TextColumn<>("fullName");
+        TextColumn<Invoice> invoiceClientColumn = new TextColumn<Invoice>("fullName");
         invoiceClientColumn.setText("Client");
+        invoiceClientColumn.setCellFactory(new Callback<TableColumn<Invoice, String>, TableCell<Invoice, String>>() {
+            @Override
+            public TableCell<Invoice, String> call(TableColumn<Invoice, String> param) {
+                TableCell<Invoice, String> cell = new TableCell<Invoice, String>();
+                Text text = new Text();
+                text.setStyle("-fx-text-fill: white; -fx-color:white");
+                cell.setGraphic(text);
+                cell.setPrefHeight(Control.USE_COMPUTED_SIZE);
+                text.wrappingWidthProperty().bind(cell.widthProperty());
+                text.textProperty().bind(cell.itemProperty());
+                cell.setStyle("-fx-text-fill: white; -fx-color:white");
+                return cell ;
+            }
+        });
         this.addColumn(invoiceClientColumn);
         invoiceClientColumn.setPrefWidth(250);
 
@@ -58,6 +76,7 @@ public class InvoicesTableView extends TableControl<Invoice> {
         for (TableColumn<Invoice, ?> invoiceTableColumn : this.getLeafColumns()) {
             if(invoiceTableColumn instanceof BaseColumn)
             ((BaseColumn)invoiceTableColumn).setAlignment(Pos.CENTER);
+            ((BaseColumn)invoiceTableColumn).setFilterable(false);
         }
 
     }
@@ -71,7 +90,7 @@ public class InvoicesTableView extends TableControl<Invoice> {
             for (InvoiceDetail invoiceDetail : allInvoices) {
                 invoices.add(Invoice.fromInvoiceDetail(invoiceDetail));
             }
-            TableData<Invoice> tableData = new TableData<>(invoices, false, invoices.size());
+            TableData<Invoice> tableData = new TableData<Invoice>(invoices, false, invoices.size());
             return tableData;
         }
 
@@ -84,30 +103,15 @@ public class InvoicesTableView extends TableControl<Invoice> {
 
         @Override
         public boolean canDelete(TableControl<Invoice> table) {
-           /* Action response = Dialogs.create()
+            Action response = Dialogs.create()
                     .title("Confirmation")
                     .message(
                             "Attention tous les commandes correspondentes " +
                                     "vont être supprimer").
                             style(DialogStyle.NATIVE).
                             owner(App.stage).
-                            showConfirm();*/
-            List<Dialogs.CommandLink> links = Arrays.asList(
-                    new Dialogs.CommandLink("Add a network that is in the range of this computer",
-                            "This shows you a list of networks that are currently available and lets you connect to one."),
-                    new Dialogs.CommandLink("Manually create a network profile",
-                            "This creates a new network profile or locates an existing one and saves it on your computer"),
-                    new Dialogs.CommandLink("Create an ad hoc network",
-                            "This creates a temporary network for sharing files or and Internet connection"));
-
-            Action response = Dialogs.create()
-                    .owner(App.stage)
-                    .title("Manually connect to wireless network")
-                    .masthead( "Manually connect to wireless network")
-                    .message("How do you want to add a network?").
-                            style(DialogStyle.NATIVE)
-                    .showCommandLinks(links.get(1), links);
-            if(response== Dialog.Actions.OK){
+                            showConfirm();
+            if(response == Dialog.Actions.YES){
                 return true;
             }
             return false;
