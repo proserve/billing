@@ -2,7 +2,7 @@ package com.andima.billing.core.request.invoice;
 
 import com.andima.billing.core.domain.ProductInvoiceCore;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class InvoiceDetail {
     private int number;
-    private Date date;
+    private LocalDate date;
     private List<ProductInvoiceCore> productsLines;
     private double tvaPercentage;
     private String fullName;
@@ -49,11 +49,11 @@ public class InvoiceDetail {
         this.number = number;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

@@ -29,7 +29,9 @@ public class AddressesPersistenceServiceImpl implements AddressesPersistenceServ
     @Override
     public List<AddressDetail> getAllAddresses() {
         List<Address> addresses = addressesRepository.findAll();
+        System.out.println("ghiboub");
         List<AddressDetail> addressDetails = new ArrayList<AddressDetail>();
+        if(addresses != null)
         for (Address address : addresses) {
             addressDetails.add(address.toAddressDetail());
         }

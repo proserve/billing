@@ -11,17 +11,12 @@ import com.andima.billing.core.service.ClientsPersistenceService;
 import com.panemu.tiwulfx.common.TableCriteria;
 import com.panemu.tiwulfx.common.TableData;
 import com.panemu.tiwulfx.common.TiwulFXUtil;
-import com.panemu.tiwulfx.control.TypeAheadField;
 import com.panemu.tiwulfx.dialog.MessageDialog;
 import com.panemu.tiwulfx.dialog.MessageDialogBuilder;
 import com.panemu.tiwulfx.table.*;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
-import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
 
@@ -34,14 +29,12 @@ import java.util.Set;
 /**
  * Created by GHIBOUB Khalid  on 19/08/2014.
  */
-public class clientViews extends AnchorPane{
+public class ClientViews extends AnchorPane{
     private TableControl<Client> clientTableControl = new TableControl<Client>(Client.class);
     private ClientsPersistenceService persistenceService = SpringUtil.getBean(ClientsPersistenceService.class);
     private AddressesPersistenceService addressesPersistenceService = SpringUtil.getBean(AddressesPersistenceService.class);
-    private Button on;
-    private BaseColumn<Client, Address> addressColumn;
 
-    public clientViews() {
+    public ClientViews() {
         this.getStylesheets().add("css/win7glass.css");
         this.setWidth(800);
         this.setHeight(600);
@@ -51,22 +44,6 @@ public class clientViews extends AnchorPane{
         AnchorPane.setLeftAnchor(clientTableControl, 0.0);
         AnchorPane.setBottomAnchor(clientTableControl,0.0);
         AnchorPane.setRightAnchor(clientTableControl, 0.0);
-        final TypeAheadField<Address> aheadField = new TypeAheadField<Address>();
-        List<AddressDetail> allAddresses = addressesPersistenceService.getAllAddresses();
-
-        this.getChildren().add(aheadField);
-        for (AddressDetail detail : allAddresses) {
-            Address address = Address.fromAddressDetail(detail);
-            aheadField.addItem(address.toString(), address);
-        }
-        Button button = new Button("ok");
-        aheadField.setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
-            @Override
-            public void handle(ContextMenuEvent event) {
-                System.out.println(aheadField.getValue());
-            }
-        });
-
     }
 
     private void createClientTable() {
@@ -86,10 +63,11 @@ public class clientViews extends AnchorPane{
         lastNameColumn.setRequired(true);
         lastNameColumn.setNullLabel("Le nom de client ne peut pas être vide");
 
-        addressColumn = new TypeAheadColumn<Client, Address>("address");
+        TypeAheadColumn<Client, Address> addressColumn = new TypeAheadColumn<Client, Address>("address");
         List<AddressDetail> allAddresses = addressesPersistenceService.getAllAddresses();
         for (AddressDetail detail : allAddresses) {
             Address address = Address.fromAddressDetail(detail);
+            addressColumn.addItem(address.toString(), address);
         }
 
         addressColumn.setText("Adresse");
@@ -102,9 +80,6 @@ public class clientViews extends AnchorPane{
         NCFColumn.setText("N°FC");
         NCFColumn.setAlignment(Pos.CENTER);
         NCFColumn.setRequired(true);
-        on = new Button("On");
-        on.setOnAction(new ActionEventEventHandler());
-        clientTableControl.addButton(on);
         clientTableControl.setController(new ClientTableController());
         clientTableControl.setErrorHandlerCallback(new ErrorHandler());
         clientTableControl.setAgileEditing(true);
@@ -115,25 +90,11 @@ public class clientViews extends AnchorPane{
         clientTableControl.setSelectionMode(SelectionMode.MULTIPLE);
         for (TableColumn<Client, ?> leafColumn : clientTableControl.getLeafColumns()) {
             leafColumn.setPrefWidth(200);
+            ((BaseColumn) leafColumn).setFilterable(false);
         }
+        clientTableControl.getTableView().getStylesheets().add("css/theme.css");
 
 
-
-    }
-
-    private class ActionEventEventHandler implements EventHandler<ActionEvent> {
-        public  boolean isOn = true;
-
-        @Override
-        public void handle(ActionEvent event) {
-            if(isOn){
-                isOn = false;
-                on.setText("Off");
-            }else{
-                isOn = true;
-                on.setText("On");
-            }
-        }
     }
 
     private class ClientTableController extends TableController<Client> {

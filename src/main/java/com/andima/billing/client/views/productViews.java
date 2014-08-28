@@ -10,10 +10,7 @@ import com.panemu.tiwulfx.common.TableData;
 import com.panemu.tiwulfx.common.TiwulFXUtil;
 import com.panemu.tiwulfx.dialog.MessageDialog;
 import com.panemu.tiwulfx.dialog.MessageDialogBuilder;
-import com.panemu.tiwulfx.table.NumberColumn;
-import com.panemu.tiwulfx.table.TableControl;
-import com.panemu.tiwulfx.table.TableController;
-import com.panemu.tiwulfx.table.TextColumn;
+import com.panemu.tiwulfx.table.*;
 import javafx.geometry.Pos;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
@@ -29,10 +26,10 @@ import java.util.Set;
 /**
  * Created by GHIBOUB Khalid  on 19/08/2014.
  */
-public class productViews extends AnchorPane{
+public class ProductViews extends AnchorPane{
     private TableControl<Product> productTableControl = new TableControl<Product>(Product.class);
     private ProductsPersistenceService persistenceService = SpringUtil.getBean(ProductsPersistenceService.class);
-    public productViews() {
+    public ProductViews() {
         this.getStylesheets().add("css/win7glass.css");
         this.setWidth(800);
         this.setHeight(600);
@@ -42,6 +39,7 @@ public class productViews extends AnchorPane{
         AnchorPane.setLeftAnchor(productTableControl, 0.0);
         AnchorPane.setBottomAnchor(productTableControl, 0.0);
         AnchorPane.setRightAnchor(productTableControl, 0.0);
+
     }
 
     private void createProductTable() {
@@ -72,7 +70,7 @@ public class productViews extends AnchorPane{
 
         productTableControl.setController(new ProductTableController());
         productTableControl.setErrorHandlerCallback(new ErrorHandler());
-        productTableControl.setAgileEditing(true);
+        productTableControl.setAgileEditing(false);
         productTableControl.reload();
         productTableControl.setVisibleComponents(false, TableControl.Component.FOOTER);
         productTableControl.setReloadOnCriteriaChange(true);
@@ -80,14 +78,15 @@ public class productViews extends AnchorPane{
         productTableControl.setSelectionMode(SelectionMode.MULTIPLE);
         for (TableColumn<Product, ?> leafColumn : productTableControl.getLeafColumns()) {
             leafColumn.setPrefWidth(200);
+            ((BaseColumn) leafColumn).setFilterable(false);
         }
-
+        productTableControl.getStylesheets().add("/css/theme.css");
     }
 
     private class ProductTableController extends TableController<Product> {
         @Override
-        public TableData<Product> loadData(int startIndex, List<TableCriteria> filteredColumns, List<String> sortedColumns, List<TableColumn.SortType> sortingOrders, int maxResult) {
-
+        public TableData<Product> loadData(int startIndex, List<TableCriteria> filteredColumns, List<String>
+                sortedColumns, List<TableColumn.SortType> sortingOrders, int maxResult) {
             List<ProductDetail> allProductDetails = persistenceService.getAllProducts();
             List<Product> allProducts = new ArrayList<Product>();
             for (ProductDetail productDetail : allProductDetails) {

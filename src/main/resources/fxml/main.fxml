@@ -9,286 +9,317 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="800.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.andima.billing.client.controller.MainController">
-   <content>
-      <AnchorPane fx:id="mainAnchor">
-          <children>
-            <VBox prefHeight="200.0" prefWidth="514.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <HBox>
-                     <children>
-                        <HBox />
-                        <AnchorPane HBox.hgrow="ALWAYS">
-                           <children>
-                              <MenuBar prefHeight="43.0" prefWidth="885.0" stylesheets="@../css/DarkTheme.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                <menus>
-                                  <Menu mnemonicParsing="false" text="Fichier">
-                                    <items>
-                                      <MenuItem mnemonicParsing="false" text="Fermer">
-                                             <graphic>
-                                                <ImageView>
-                                                   <image>
-                                                      <Image url="@../../../../../../Software/Developement/Template/icones/Icons/preview/Free/oxygen-icons-png-master%20-7/oxygen/32x32/actions/system-shutdown.png" />
-                                                   </image>
+<ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="800.0" prefWidth="1024.0"
+            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.andima.billing.client.controller.MainController">
+    <content>
+        <AnchorPane fx:id="mainAnchor">
+            <children>
+                <VBox prefHeight="200.0" prefWidth="514.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                      AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <children>
+                        <HBox>
+                            <children>
+                                <HBox/>
+                                <AnchorPane HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <MenuBar prefHeight="43.0" prefWidth="885.0" stylesheets="@../css/DarkTheme.css"
+                                                 AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                                                 AnchorPane.topAnchor="0.0">
+                                            <menus>
+                                                <Menu mnemonicParsing="false" text="Fichier">
+                                                    <items>
+                                                        <MenuItem mnemonicParsing="false" text="Fermer">
+                                                            <graphic>
+                                                                <ImageView>
+                                                                    <image>
+                                                                        <Image url="@../images/system-shutdown.png"/>
+                                                                    </image>
+                                                                </ImageView>
+                                                            </graphic>
+                                                        </MenuItem>
+                                                    </items>
+                                                </Menu>
+                                                <Menu mnemonicParsing="false" text="Edit">
+                                                    <items>
+                                                        <MenuItem mnemonicParsing="false" text="Delete"/>
+                                                    </items>
+                                                </Menu>
+                                                <Menu mnemonicParsing="false" text="Help">
+                                                    <items>
+                                                        <MenuItem mnemonicParsing="false" text="About"/>
+                                                    </items>
+                                                </Menu>
+                                            </menus>
+                                        </MenuBar>
+                                        <Button mnemonicParsing="false" style="-fx-background-color: black;"
+                                                stylesheets="@../css/win7glass.css" AnchorPane.rightAnchor="30.0"
+                                                AnchorPane.topAnchor="0.0">
+                                            <graphic>
+                                                <ImageView fitHeight="16.0" fitWidth="16.0">
+                                                    <image>
+                                                        <Image url="@../images/window-duplicate.png"/>
+                                                    </image>
                                                 </ImageView>
-                                             </graphic>
-                                          </MenuItem>
-                                    </items>
-                                  </Menu>
-                                  <Menu mnemonicParsing="false" text="Edit">
-                                    <items>
-                                      <MenuItem mnemonicParsing="false" text="Delete" />
-                                    </items>
-                                  </Menu>
-                                  <Menu mnemonicParsing="false" text="Help">
-                                    <items>
-                                      <MenuItem mnemonicParsing="false" text="About" />
-                                    </items>
-                                  </Menu>
-                                </menus>
-                              </MenuBar>
-                              <Button mnemonicParsing="false" style="-fx-background-color: black;" stylesheets="@../css/win7glass.css" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="0.0">
-                                 <graphic>
-                                    <ImageView fitHeight="16.0" fitWidth="16.0">
-                                       <image>
-                                          <Image url="@../../../../../../Software/Developement/Template/icones/Icons/preview/Free/oxygen-icons-png-master%20-7/oxygen/32x32/actions/window-duplicate.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
-                              <Button layoutX="42.0" mnemonicParsing="false" onAction="#closeApp" style="-fx-background-color: black;" stylesheets="@../css/win7glass.css" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <graphic>
-                                    <ImageView fitHeight="16.0" fitWidth="16.0" onMouseClicked="#closeApp" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../../../../../Software/Developement/Template/icones/Icons/preview/Free/oxygen-icons-png-master%20-7/oxygen/32x32/actions/system-shutdown.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
-                            <Button layoutX="84.0" mnemonicParsing="false" style="-fx-background-color: black;" stylesheets="@../css/win7glass.css" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="0.0">
-                                 <graphic>
-                                    <ImageView fitHeight="16.0" fitWidth="16.0">
-                                       <image>
-                                          <Image url="@../../../../../../Software/Developement/Template/icones/Icons/preview/Free/oxygen-icons-png-master%20-7/oxygen/32x32/actions/list-remove.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </HBox>
-                  <ToolBar stylesheets="@../css/win7glass.css">
-                     <items>
-                        <HBox prefWidth="900.0" stylesheets="@../css/win7glass.css">
-                           <children>
-                                <Button mnemonicParsing="false" onAction="#showInvoiceInterface">
-                                 <graphic>
-                                    <VBox>
-                                       <children>
-                                          <HBox>
-                                             <children>
-                                                <Region prefHeight="0.0" prefWidth="27.0" />
-                                                <ImageView>
-                                                   <image>
-                                                      <Image url="@../../../../../../Software/Developement/Template/icones/Icons/preview/Free/oxygen-icons-png-master%20-7/oxygen/32x32/actions/resource-calendar-child-insert.png" />
-                                                   </image>
+                                            </graphic>
+                                        </Button>
+                                        <Button layoutX="42.0" mnemonicParsing="false" onAction="#closeApp"
+                                                style="-fx-background-color: black;" stylesheets="@../css/win7glass.css"
+                                                AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <graphic>
+                                                <ImageView fitHeight="16.0" fitWidth="16.0" onMouseClicked="#closeApp"
+                                                           preserveRatio="true">
+                                                    <image>
+                                                        <Image url="@../images/system-shutdown.png"/>
+                                                    </image>
                                                 </ImageView>
-                                             </children>
-                                          </HBox>
-                                          <Label text="Créer une facture" />
-                                       </children>
-                                    </VBox>
-                                 </graphic>
-                              </Button>
-                              <Button mnemonicParsing="false" onAction="#showInvoiceInterface">
-                                 <graphic>
-                                    <VBox>
-                                       <children>
-                                          <ImageView>
-                                             <image>
-                                                <Image url="@../../../../../../Software/Developement/Template/icones/Icons/preview/Free/oxygen-icons-png-master%20-7/oxygen/32x32/actions/story-editor.png" />
-                                             </image>
-                                          </ImageView>
-                                          <Label text="Ouvrir" />
-                                       </children>
-                                    </VBox>
-                                 </graphic>
-                              </Button>
-                              <Button mnemonicParsing="false" onAction="#deleteFacture">
-                                 <graphic>
-                                    <VBox>
-                                       <children>
-                                          <HBox>
-                                             <children>
-                                                <Region prefWidth="10.0" />
-                                                <ImageView fitHeight="32.0" fitWidth="32.0" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../../../../../../Software/Developement/Template/icones/Icons/preview/Free/oxygen-icons-png-master%20-7/oxygen/48x48/actions/edit-table-delete-column.png" />
-                                                   </image>
+                                            </graphic>
+                                        </Button>
+                                        <Button layoutX="84.0" mnemonicParsing="false"
+                                                style="-fx-background-color: black;" stylesheets="@../css/win7glass.css"
+                                                AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="0.0">
+                                            <graphic>
+                                                <ImageView fitHeight="16.0" fitWidth="16.0">
+                                                    <image>
+                                                        <Image url="@../images/list-remove.png"/>
+                                                    </image>
                                                 </ImageView>
-                                             </children>
-                                          </HBox>
-                                          <Label text="Supprimer" />
-                                       </children>
-                                    </VBox>
-                                 </graphic>
-                              </Button>
-                              <Button mnemonicParsing="false" onAction="#showInvoiceInterface">
-                                 <graphic>
-                                    <VBox>
-                                       <children>
-                                          <HBox>
-                                             <children>
-                                                <Region prefWidth="10.0" />
-                                                <ImageView>
-                                                   <image>
-                                                      <Image url="@../../../../../../Software/Developement/Template/icones/Icons/preview/Free/oxygen-icons-png-master%20-7/oxygen/32x32/devices/printer.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </children>
-                                          </HBox>
-                                          <Label text="Imprimer" />
-                                       </children>
-                                    </VBox>
-                                 </graphic>
-                              </Button>
-                              <Region HBox.hgrow="ALWAYS" />
-                                  <Button fx:id="addProductBtn" mnemonicParsing="false" onAction="#showProductInterface">
-                                 <graphic>
-                                    <VBox>
-                                       <children>
-                                          <ImageView>
-                                             <image>
-                                                <Image url="@../../../../../../Software/Developement/Template/icones/Icons/preview/Free/oxygen-icons-png-master%20-7/oxygen/32x32/mimetypes/application-x-lzma-compressed-tar.png" />
-                                             </image>
-                                          </ImageView>
-                                          <Label text="Produit" />
-                                       </children>
-                                    </VBox>
-                                 </graphic>
-                                  </Button>
-                                  <Button mnemonicParsing="false" onAction="#showClientInterface">
-                                 <graphic>
-                                    <VBox>
-                                       <children>
-                                          <ImageView>
-                                             <image>
-                                                <Image url="@../../../../../../Software/Developement/Template/icones/Icons/preview/Free/oxygen-icons-png-master%20-7/oxygen/32x32/actions/user-properties.png" />
-                                             </image>
-                                          </ImageView>
-                                          <Label text="Client" />
-                                       </children>
-                                    </VBox>
-                                 </graphic>
-                                  </Button>
-                                  <Button mnemonicParsing="false" onAction="#showAddressInterface">
-                                 <graphic>
-                                    <VBox>
-                                       <children>
-                                          <ImageView>
-                                             <image>
-                                                <Image url="@../../../../../../Software/Developement/Template/icones/Icons/preview/Free/oxygen-icons-png-master%20-7/oxygen/32x32/mimetypes/x-office-address-book.png" />
-                                             </image>
-                                          </ImageView>
-                                          <Label text="Adresse" />
-                                       </children>
-                                    </VBox>
-                                 </graphic>
-                                  </Button>
-                           </children>
+                                            </graphic>
+                                        </Button>
+                                    </children>
+                                </AnchorPane>
+                            </children>
                         </HBox>
-                     </items>
-                  </ToolBar>
-                  <SplitPane dividerPositions="0.67" stylesheets="@../css/DarkTheme.css" VBox.vgrow="ALWAYS">
-                    <items>
-                      <AnchorPane fx:id="tableAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #1d1d1d;">
-                           <children>
-                              <VBox layoutX="-6.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <children>
-                                    <Label contentDisplay="TOP" layoutX="-6.0" layoutY="285.0" prefHeight="62.0" prefWidth="304.0" styleClass="label-header" text="Detail de Facture" underline="true">
-                                       <font>
-                                          <Font name="Segoe UI" size="35.0" />
-                                       </font>
-                                    </Label>
-                                    <GridPane prefHeight="285.0" prefWidth="285.0">
-                                       <children>
-                                          <Label text="ID: ">
-                                             <font>
-                                                <Font name="Segoe UI" size="18.0" />
-                                             </font>
-                                          </Label>
-                                          <Label fx:id="IDLabel" styleClass="label-bright" GridPane.columnIndex="1">
-                                             <font>
-                                                <Font name="Segoe UI" size="18.0" />
-                                             </font>
-                                          </Label>
-                                          <Label text="Name: " GridPane.rowIndex="1">
-                                             <font>
-                                                <Font name="Segoe UI" size="18.0" />
-                                             </font>
-                                          </Label>
-                                          <Label text="Start date: " GridPane.rowIndex="2">
-                                             <font>
-                                                <Font name="Segoe UI" size="18.0" />
-                                             </font>
-                                          </Label>
-                                          <Label text="Parent: " GridPane.rowIndex="4">
-                                             <font>
-                                                <Font name="Segoe UI" size="18.0" />
-                                             </font>
-                                          </Label>
-                                          <Label fx:id="nameLabel" styleClass="label-bright" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                             <font>
-                                                <Font name="Segoe UI" size="18.0" />
-                                             </font>
-                                          </Label>
-                                          <Label fx:id="startDateLabel" styleClass="label-bright" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                             <font>
-                                                <Font name="Segoe UI" size="18.0" />
-                                             </font>
-                                          </Label>
-                                          <Label fx:id="parentNameLabel" styleClass="label-bright" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                                             <font>
-                                                <Font name="Segoe UI" size="18.0" />
-                                             </font>
-                                          </Label>
-                                          <Label text="End date: " GridPane.rowIndex="3">
-                                             <font>
-                                                <Font name="Segoe UI" size="18.0" />
-                                             </font>
-                                          </Label>
-                                          <Label fx:id="endDateLabel" styleClass="label-bright" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                                             <font>
-                                                <Font name="Segoe UI" size="18.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                       <columnConstraints>
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="136.0" minWidth="10.0" prefWidth="90.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="199.0" minWidth="10.0" prefWidth="194.0" />
-                                       </columnConstraints>
-                                       <rowConstraints>
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                       </rowConstraints>
-                                    </GridPane>
-                                 </children>
-                                 <padding>
-                                    <Insets left="10.0" />
-                                 </padding>
-                              </VBox>
-                           </children>
-                        </AnchorPane>
-                    </items>
-                  </SplitPane>
-               </children>
-            </VBox>
-          </children>
-      </AnchorPane>
-   </content>
+                        <ToolBar stylesheets="@../css/win7glass.css">
+                            <items>
+                                <HBox prefWidth="900.0" stylesheets="@../css/win7glass.css">
+                                    <children>
+                                        <Button mnemonicParsing="false" onAction="#showInvoiceInterface">
+                                            <graphic>
+                                                <VBox>
+                                                    <children>
+                                                        <HBox>
+                                                            <children>
+                                                                <Region prefHeight="0.0" prefWidth="27.0"/>
+                                                                <ImageView>
+                                                                    <image>
+                                                                        <Image url="@../images/resource-calendar-child-insert.png"/>
+                                                                    </image>
+                                                                </ImageView>
+                                                            </children>
+                                                        </HBox>
+                                                        <Label text="Créer une facture"/>
+                                                    </children>
+                                                </VBox>
+                                            </graphic>
+                                        </Button>
+                                        <Button mnemonicParsing="false" onAction="#showInvoiceInterface">
+                                            <graphic>
+                                                <VBox>
+                                                    <children>
+                                                        <ImageView>
+                                                            <image>
+                                                                <Image url="@../images/story-editor.png"/>
+                                                            </image>
+                                                        </ImageView>
+                                                        <Label text="Ouvrir"/>
+                                                    </children>
+                                                </VBox>
+                                            </graphic>
+                                        </Button>
+                                        <Button mnemonicParsing="false" onAction="#deleteFacture">
+                                            <graphic>
+                                                <VBox>
+                                                    <children>
+                                                        <HBox>
+                                                            <children>
+                                                                <Region prefWidth="10.0"/>
+                                                                <ImageView fitHeight="32.0" fitWidth="32.0"
+                                                                           preserveRatio="true">
+                                                                    <image>
+                                                                        <Image url="@../images/edit-table-delete-column.png"/>
+                                                                    </image>
+                                                                </ImageView>
+                                                            </children>
+                                                        </HBox>
+                                                        <Label text="Supprimer"/>
+                                                    </children>
+                                                </VBox>
+                                            </graphic>
+                                        </Button>
+                                        <Button mnemonicParsing="false" onAction="#showInvoiceInterface">
+                                            <graphic>
+                                                <VBox>
+                                                    <children>
+                                                        <HBox>
+                                                            <children>
+                                                                <Region prefWidth="10.0"/>
+                                                                <ImageView>
+                                                                    <image>
+                                                                        <Image url="@../images/printer.png"/>
+                                                                    </image>
+                                                                </ImageView>
+                                                            </children>
+                                                        </HBox>
+                                                        <Label text="Imprimer"/>
+                                                    </children>
+                                                </VBox>
+                                            </graphic>
+                                        </Button>
+                                        <Region HBox.hgrow="ALWAYS"/>
+                                        <Button fx:id="addProductBtn" mnemonicParsing="false"
+                                                onAction="#showProductInterface">
+                                            <graphic>
+                                                <VBox>
+                                                    <children>
+                                                        <ImageView>
+                                                            <image>
+                                                                <Image url="@../images/application-x-lzma-compressed-tar.png"/>
+                                                            </image>
+                                                        </ImageView>
+                                                        <Label text="Produit"/>
+                                                    </children>
+                                                </VBox>
+                                            </graphic>
+                                        </Button>
+                                        <Button mnemonicParsing="false" onAction="#showClientInterface">
+                                            <graphic>
+                                                <VBox>
+                                                    <children>
+                                                        <ImageView>
+                                                            <image>
+                                                                <Image url="@../images/user-properties.png"/>
+                                                            </image>
+                                                        </ImageView>
+                                                        <Label text="Client"/>
+                                                    </children>
+                                                </VBox>
+                                            </graphic>
+                                        </Button>
+                                        <Button mnemonicParsing="false" onAction="#showAddressInterface">
+                                            <graphic>
+                                                <VBox>
+                                                    <children>
+                                                        <ImageView>
+                                                            <image>
+                                                                <Image url="@../images/x-office-address-book.png"/>
+                                                            </image>
+                                                        </ImageView>
+                                                        <Label text="Adresse"/>
+                                                    </children>
+                                                </VBox>
+                                            </graphic>
+                                        </Button>
+                                    </children>
+                                </HBox>
+                            </items>
+                        </ToolBar>
+                        <SplitPane dividerPositions="0.67" stylesheets="@../css/DarkTheme.css" VBox.vgrow="ALWAYS">
+                            <items>
+                                <AnchorPane fx:id="tableAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0"
+                                            prefWidth="100.0"/>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0"
+                                            style="-fx-background-color: #1d1d1d;">
+                                    <children>
+                                        <VBox layoutX="-6.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                              AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <children>
+                                                <Label contentDisplay="TOP" layoutX="-6.0" layoutY="285.0"
+                                                       prefHeight="62.0" prefWidth="304.0" styleClass="label-header"
+                                                       text="Detail de Facture" underline="true">
+                                                    <font>
+                                                        <Font name="Segoe UI" size="35.0"/>
+                                                    </font>
+                                                </Label>
+                                                <GridPane prefHeight="285.0" prefWidth="285.0">
+                                                    <children>
+                                                        <Label text="ID: ">
+                                                            <font>
+                                                                <Font name="Segoe UI" size="18.0"/>
+                                                            </font>
+                                                        </Label>
+                                                        <Label fx:id="IDLabel" styleClass="label-bright"
+                                                               GridPane.columnIndex="1">
+                                                            <font>
+                                                                <Font name="Segoe UI" size="18.0"/>
+                                                            </font>
+                                                        </Label>
+                                                        <Label text="Name: " GridPane.rowIndex="1">
+                                                            <font>
+                                                                <Font name="Segoe UI" size="18.0"/>
+                                                            </font>
+                                                        </Label>
+                                                        <Label text="Start date: " GridPane.rowIndex="2">
+                                                            <font>
+                                                                <Font name="Segoe UI" size="18.0"/>
+                                                            </font>
+                                                        </Label>
+                                                        <Label text="Parent: " GridPane.rowIndex="4">
+                                                            <font>
+                                                                <Font name="Segoe UI" size="18.0"/>
+                                                            </font>
+                                                        </Label>
+                                                        <Label fx:id="nameLabel" styleClass="label-bright"
+                                                               GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                            <font>
+                                                                <Font name="Segoe UI" size="18.0"/>
+                                                            </font>
+                                                        </Label>
+                                                        <Label fx:id="startDateLabel" styleClass="label-bright"
+                                                               GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                            <font>
+                                                                <Font name="Segoe UI" size="18.0"/>
+                                                            </font>
+                                                        </Label>
+                                                        <Label fx:id="parentNameLabel" styleClass="label-bright"
+                                                               GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                            <font>
+                                                                <Font name="Segoe UI" size="18.0"/>
+                                                            </font>
+                                                        </Label>
+                                                        <Label text="End date: " GridPane.rowIndex="3">
+                                                            <font>
+                                                                <Font name="Segoe UI" size="18.0"/>
+                                                            </font>
+                                                        </Label>
+                                                        <Label fx:id="endDateLabel" styleClass="label-bright"
+                                                               GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                            <font>
+                                                                <Font name="Segoe UI" size="18.0"/>
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                    <columnConstraints>
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="136.0"
+                                                                           minWidth="10.0" prefWidth="90.0"/>
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="199.0"
+                                                                           minWidth="10.0" prefWidth="194.0"/>
+                                                    </columnConstraints>
+                                                    <rowConstraints>
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                        vgrow="SOMETIMES"/>
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                        vgrow="SOMETIMES"/>
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                        vgrow="SOMETIMES"/>
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                        vgrow="SOMETIMES"/>
+                                                        <RowConstraints minHeight="10.0" prefHeight="30.0"
+                                                                        vgrow="SOMETIMES"/>
+                                                    </rowConstraints>
+                                                </GridPane>
+                                            </children>
+                                            <padding>
+                                                <Insets left="10.0"/>
+                                            </padding>
+                                        </VBox>
+                                    </children>
+                                </AnchorPane>
+                            </items>
+                        </SplitPane>
+                    </children>
+                </VBox>
+            </children>
+        </AnchorPane>
+    </content>
 </ScrollPane>

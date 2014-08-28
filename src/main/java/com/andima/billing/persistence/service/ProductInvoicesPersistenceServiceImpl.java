@@ -49,10 +49,15 @@ public class ProductInvoicesPersistenceServiceImpl implements ProductInvoicesPer
     @Override
     public ProductInvoiceDetail update(ProductInvoiceDetail detail) {
         ProductInvoice product = productInvoicesRepository.findOne(detail.getNumber());
-        BeanUtils.copyProperties(detail, product);
-        product.setInvoice(Invoice.fromInvoiceDetail(detail.getInvoiceDetail()));
-        ProductInvoice save = productInvoicesRepository.save(product);
-        return save.toProductInvoiceDetail();
+        if(product != null ){
+            BeanUtils.copyProperties(detail, product);
+            if(detail.getInvoiceDetail() != null)
+                product.setInvoice(Invoice.fromInvoiceDetail(detail.getInvoiceDetail()));
+            ProductInvoice save = productInvoicesRepository.save(product);
+            return save.toProductInvoiceDetail();
+        }else{
+            return createProductInvoice(detail);
+        }
     }
 
 }

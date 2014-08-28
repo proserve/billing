@@ -6,6 +6,7 @@ import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.beans.BeanUtils;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -90,12 +91,16 @@ public class Invoice {
     public InvoiceDetail toInvoiceDetail(){
         InvoiceDetail invoicesDetails = new InvoiceDetail();
         BeanUtils.copyProperties(this, invoicesDetails);
+        invoicesDetails.setDate(LocalDate.of(date.getYear(), date.getMonth(), date.getDay()));
         return invoicesDetails;
     }
 
     public static Invoice fromInvoiceDetail(InvoiceDetail details){
         Invoice productInvoice = new Invoice();
         BeanUtils.copyProperties(details, productInvoice);
+        LocalDate detailsDate = details.getDate();
+        productInvoice.setDate(new Date(detailsDate.getYear(), detailsDate.getMonth().getValue(),
+                detailsDate.getDayOfMonth()));
         return productInvoice;
     }
 }

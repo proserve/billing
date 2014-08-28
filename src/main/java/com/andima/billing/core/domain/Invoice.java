@@ -1,7 +1,7 @@
 package com.andima.billing.core.domain;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class Invoice {
     private int number;
-    private Date date;
+    private LocalDate date;
     private List<ProductInvoiceCore> productsLines;
     private double tvaPercentage;
     private String fullName;
@@ -23,13 +23,13 @@ public class Invoice {
     public Invoice(List<ProductInvoiceCore> productsLines, double tvaPercentage) {
         this.productsLines = productsLines;
         this.tvaPercentage = tvaPercentage;
-        this.date = new Date();
+        this.date = LocalDate.now();
     }
 
     public Invoice(ArrayList<ProductInvoiceCore> productInvoiceCores) {
         this.productsLines = productInvoiceCores;
         this.tvaPercentage = 17;
-        this.date = new Date();
+        this.date =  LocalDate.now();
     }
 
     public double getHTAmountSum() {

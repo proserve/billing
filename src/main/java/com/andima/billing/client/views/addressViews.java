@@ -8,6 +8,7 @@ import com.andima.billing.core.service.AddressesPersistenceService;
 import com.panemu.tiwulfx.common.TableCriteria;
 import com.panemu.tiwulfx.common.TableData;
 import com.panemu.tiwulfx.dialog.MessageDialogBuilder;
+import com.panemu.tiwulfx.table.BaseColumn;
 import com.panemu.tiwulfx.table.TableControl;
 import com.panemu.tiwulfx.table.TableController;
 import com.panemu.tiwulfx.table.TextColumn;
@@ -26,10 +27,10 @@ import java.util.Set;
 /**
  * Created by GHIBOUB Khalid  on 19/08/2014.
  */
-public class addressViews extends AnchorPane{
+public class AddressViews extends AnchorPane{
     private TableControl<Address> addressTableControl = new TableControl<Address>(Address.class);
     private AddressesPersistenceService persistenceService = SpringUtil.getBean(AddressesPersistenceService.class);
-    public addressViews() {
+    public AddressViews() {
         this.getStylesheets().add("css/win7glass.css");
         this.setWidth(800);
         this.setHeight(600);
@@ -71,6 +72,8 @@ public class addressViews extends AnchorPane{
         addressTableControl.setSelectionMode(SelectionMode.MULTIPLE);
         for (TableColumn<Address, ?> leafColumn : addressTableControl.getLeafColumns()) {
             leafColumn.setPrefWidth(200);
+            ((BaseColumn) leafColumn).setFilterable(false);
+
         }
         addressTableControl.getTableView().getStylesheets().add("css/theme.css");
 
